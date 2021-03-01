@@ -1,14 +1,25 @@
 import arrayMin from './min'
 import arrayMax from './max'
 
+function nearestThousand(n) {
+  return Math.ceil(n/1000)*1000
+}
+function getMax(n) {
+  let ret = nearestThousand(arrayMax(n))
+  if (ret === 0) {
+    return 1000
+  }
+  return ret
+}
+
 export default ({
   data,
   limit,
   width = 1,
   height = 1,
   margin = 0,
-  max = arrayMax(data),
-  min = arrayMin(data),
+  max = getMax(data),
+  min = 0,//arrayMin(data),
   textHeight = 0
 }) => {
   const len = data.length
